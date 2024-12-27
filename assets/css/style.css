@@ -1,0 +1,27 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .recipe-card {
+    background: #fff8e1;
+    border: 1px solid #ffa726;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recipe-card h5 {
+    font-family: 'Lobster', cursive;
+    color: #e64a19;
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  .hero {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  

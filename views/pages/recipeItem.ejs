@@ -1,0 +1,6 @@
+<%- include('partials/navbar') %>
+<div class="container mt-4">
+  <h1><%= recipe.name %></h1>
+  <p><%= recipe.description %></p>
+  <a href="/recipes/edit/<%= recipe._id %>" class="btn btn-primary">Edit Recipe</a>
+</div>

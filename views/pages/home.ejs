@@ -1,0 +1,33 @@
+<%- include('../partials/header', { title: "Home" }) %>
+<%- include('../partials/navbar') %>
+<div class="hero" style="background-image: url('/images/food-background.jpg'); height: 400px; background-size: cover; color: white; text-align: center;">
+  <h1 class="display-4" style="padding-top: 150px; font-family: 'Lobster', cursive;">Welcome to Recipe Sharing</h1>
+  <p>Share your culinary creations with the world!</p>
+</div>
+<div class="container py-5">
+  <h2 class="text-center">Explore Delicious Recipes</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="recipe-card">
+        <h5>Spaghetti Bolognese</h5>
+        <p>A classic Italian dish with rich flavors.</p>
+        <a href="/recipes/1" class="btn btn-warning">View Recipe</a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="recipe-card">
+        <h5>Chicken Curry</h5>
+        <p>A spicy and aromatic Indian delight.</p>
+        <a href="/recipes/2" class="btn btn-warning">View Recipe</a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="recipe-card">
+        <h5>Chocolate Cake</h5>
+        <p>A rich and moist dessert for any occasion.</p>
+        <a href="/recipes/3" class="btn btn-warning">View Recipe</a>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>

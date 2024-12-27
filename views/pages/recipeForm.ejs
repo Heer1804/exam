@@ -1,0 +1,15 @@
+<%- include('partials/navbar') %>
+<div class="container mt-4">
+  <h1><%= recipe ? 'Edit Recipe' : 'Add Recipe' %></h1>
+  <form action="<%= recipe ? '/recipes/update/' + recipe._id : '/recipes/add' %>" method="POST">
+    <div class="mb-3">
+      <label for="name" class="form-label">Recipe Name</label>
+      <input type="text" name="name" id="name" class="form-control" value="<%= recipe ? recipe.name : '' %>" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea name="description" id="description" class="form-control" rows="3" required><%= recipe ? recipe.description : '' %></textarea>
+    </div>
+    <button type="submit" class="btn btn-success"><%= recipe ? 'Update' : 'Submit' %></button>
+  </form>
+</div>
