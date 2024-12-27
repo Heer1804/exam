@@ -1,7 +1,7 @@
 const Comment = require('../models/Comment');
 const Recipe = require('../models/Recipe');
 
-exports.addComment = async (req, res) => {
+module.exports.addComment = async (req, res) => {
   const { content } = req.body;
   const recipeId = req.params.recipeId;
 

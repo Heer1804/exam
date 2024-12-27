@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { getAllRecipes, getRecipeById, createRecipe, updateRecipe, deleteRecipe } = require('../controllers/recipeController');  // Correct destructuring of functions
-const authenticateToken = require('../middlewares/authMiddleware');
-const authorizeRoles = require('../middlewares/authMiddleware');
+const { register, login, logout, isAuthenticated, authorizeRoles } = require('../controllers/authController');
 
-router.get('/', getAllRecipes);
-router.get('/:id', getRecipeById);
-router.post('/', authenticateToken, createRecipe);  
-router.put('/updateRecipe/:id', authenticateToken, updateRecipe);
-router.delete('/:id', authenticateToken, authorizeRoles('admin'), deleteRecipe);
+router.post('/register', register);
+router.post('/login', login);
+router.post('/logout', logout);
+router.get('/some-protected-route', isAuthenticated, (req, res) => {
+  res.status(200).json({ message: "Protected route accessed!" });
+});
+router.get('/admin-route', isAuthenticated, authorizeRoles('admin'), (req, res) => {
+  res.status(200).json({ message: "Admin route accessed!" });
+});
 
 module.exports = router;

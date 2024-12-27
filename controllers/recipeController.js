@@ -1,7 +1,7 @@
 const Recipe = require('../models/receipeSchema');
 const User = require('../models/user');
 
-exports.getAllRecipes = async (req, res) => {
+module.exports.getAllRecipes = async (req, res) => {
   try {
     const recipes = await Recipe.find().populate('author', 'username');
     res.render('pages/recipeList', { recipes });
@@ -10,7 +10,7 @@ exports.getAllRecipes = async (req, res) => {
   }
 };
 
-exports.getUserRecipes = async (req, res) => {
+module.exports.getUserRecipes = async (req, res) => {
   try {
     const recipes = await Recipe.find({ author: req.user.id });
     res.render('pages/myRecipes', { recipes });
@@ -19,7 +19,7 @@ exports.getUserRecipes = async (req, res) => {
   }
 };
 
-exports.createRecipe = async (req, res) => {
+module.exports.createRecipe = async (req, res) => {
   const { title, ingredients, steps } = req.body;
 
   try {
@@ -39,7 +39,7 @@ exports.createRecipe = async (req, res) => {
   }
 };
 
-exports.getRecipeById = async (req, res) => {
+module.exports.getRecipeById = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id).populate('author', 'username');
     res.render('pages/recipeDetails', { recipe });
@@ -48,7 +48,7 @@ exports.getRecipeById = async (req, res) => {
   }
 };
 
-exports.deleteRecipe = async (req, res) => {
+module.exports.deleteRecipe = async (req, res) => {
   try {
     await Recipe.findByIdAndDelete(req.params.id);
     res.redirect('/myRecipes');
