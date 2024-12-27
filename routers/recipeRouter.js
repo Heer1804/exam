@@ -4,7 +4,6 @@ const { getAllRecipes, getRecipeById, createRecipe, updateRecipe, deleteRecipe }
 const authenticateToken = require('../middlewares/authMiddleware');
 const authorizeRoles = require('../middlewares/authMiddleware');
 
-// Routes with correct function references
 router.get('/', getAllRecipes);
 router.get('/:id', getRecipeById);
 router.post('/', authenticateToken, createRecipe);  

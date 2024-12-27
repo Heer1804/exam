@@ -14,7 +14,6 @@ exports.addComment = async (req, res) => {
 
     await comment.save();
 
-    // Add comment to the recipe
     await Recipe.findByIdAndUpdate(recipeId, { $push: { comments: comment._id } });
 
     res.redirect(`/recipes/${recipeId}`);

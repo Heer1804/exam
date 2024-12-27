@@ -1,12 +1,11 @@
 const express = require('express');
 const authRouter = require('./authRouter');
 const recipeRouter = require('./recipeRouter');
-const commentRouter = require('./commentRouter'); // Correct import path
-
+const commentRouter = require('./commentRouter');
 const router = express.Router();
 
 router.use('/auth', authRouter);
 router.use('/recipes', recipeRouter);
-router.use('/comments', commentRouter); // Use the comment router
+router.use('/comments', commentRouter);
 
 module.exports = router;

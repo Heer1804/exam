@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-// Middleware to check for a valid JWT token
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization;
 
@@ -17,7 +16,6 @@ const authenticateToken = (req, res, next) => {
   }
 };
 
-// Middleware to restrict access based on user role
 const authorizeRoles = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {

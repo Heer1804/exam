@@ -6,7 +6,7 @@ const recipeSchema = new mongoose.Schema({
   steps: String,
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'  // Reference to User model
+    ref: 'User'  
   }
 });
 

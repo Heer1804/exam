@@ -31,8 +31,6 @@ exports.createRecipe = async (req, res) => {
     });
 
     await recipe.save();
-
-    // Add recipe to user's list
     await User.findByIdAndUpdate(req.user.id, { $push: { recipes: recipe._id } });
 
     return res.redirect('/myRecipes');

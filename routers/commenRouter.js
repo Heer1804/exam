@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Comment = require('../models/Comment'); // Assuming there's a Comment model
-const { isAuthenticated } = require('../middlewares/authMiddleware'); // Authentication middleware
+const Comment = require('../models/commentSchema'); 
+const { isAuthenticated } = require('../middlewares/authMiddleware'); 
 
 // Create a new comment
 router.post('/', isAuthenticated, async (req, res) => {
@@ -10,7 +10,7 @@ router.post('/', isAuthenticated, async (req, res) => {
     const comment = new Comment({
       recipe: recipeId,
       content,
-      user: req.user.id, // Assuming user is attached to the request by middleware
+      user: req.user.id,
     });
     await comment.save();
     res.status(201).json({ message: 'Comment added successfully', comment });
@@ -19,7 +19,6 @@ router.post('/', isAuthenticated, async (req, res) => {
   }
 });
 
-// Get comments for a specific recipe
 router.get('/:recipeId', async (req, res) => {
   try {
     const comments = await Comment.find({ recipe: req.params.recipeId }).populate('user', 'username');

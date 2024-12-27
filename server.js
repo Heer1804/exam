@@ -2,8 +2,6 @@ const express = require("express");
 const path = require("path");
 const db = require("./config/database");
 
-const router = express.Router(); // Access Router from express
-
 const port = 3000;
 
 const app = express();
@@ -22,3 +20,4 @@ app.listen(port, (err) => {
     console.log("Server started on http://localhost:" + port);
   }
 });
+
