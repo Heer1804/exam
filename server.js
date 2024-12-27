@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 app.use("/", require("./routers"));
-const commentRouter = require('./commentRouter'); 
+const commentRouter = require('./routers/commenRouter'); 
 
-router.use('/comments', commentRouter);
+app.use('/comments', commentRouter);
 
 app.listen(port, (err) => {
   if (!err) {
@@ -23,4 +23,5 @@ app.listen(port, (err) => {
     console.log("Server started on http://localhost:" + port);
   }
 });
+
 

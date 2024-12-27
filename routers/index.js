@@ -1,7 +1,7 @@
 const express = require('express');
 const authRouter = require('./authRouter');
 const recipeRouter = require('./recipeRouter');
-const commentRouter = require('./commentRouter');
+const commentRouter = require('./commenRouter');
 const router = express.Router();
 
 router.use('/auth', authRouter);

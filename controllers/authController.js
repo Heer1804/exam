@@ -2,8 +2,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const JWT_SECRET = "your_jwt_secret_key"; // Store this key securely in production!
-
+const JWT_SECRET = "your_jwt_secret_key"; 
 // Register a new user
 exports.register = async (req, res) => {
   const { username, password, role } = req.body;
@@ -62,24 +61,23 @@ exports.logout = (req, res) => {
   res.clearCookie('token').json({ message: "Logged out successfully" });
 };
 
-// Middleware to check if the user is authenticated using JWT
 exports.isAuthenticated = (req, res, next) => {
-  const token = req.cookies.token || req.header('Authorization')?.split(' ')[1]; // Check cookie or Authorization header
-
-  if (!token) {
-    return res.status(401).json({ error: 'No token provided' });
-  }
-
-  // Verify the token
-  jwt.verify(token, JWT_SECRET, (err, user) => {
-    if (err) {
-      return res.status(403).json({ error: 'Token is not valid' });
+    const token = req.cookies.token || req.header('Authorization')?.split(' ')[1]; // Check cookie or Authorization header
+  
+    if (!token) {
+      return res.status(401).json({ error: 'No token provided' });
     }
-    req.user = user; 
-    next(); 
-  });
-};
-
+  
+    // Verify the token
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+      if (err) {
+        return res.status(403).json({ error: 'Token is not valid' });
+      }
+      req.user = user; // Attach the user object to the request
+      next(); // Continue to the next middleware or route handler
+    });
+  };
+ 
 exports.authorizeRoles = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
